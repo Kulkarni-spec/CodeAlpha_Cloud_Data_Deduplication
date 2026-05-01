@@ -1,98 +1,81 @@
-\# Cloud Data Deduplication System
+#  CodeAlpha - Cloud Data Deduplication System
 
+##  Internship Task
 
+This project is developed as part of the **CodeAlpha Cloud Computing Internship (Task 1: Data Redundancy Removal System)**.
 
-\## Overview
+---
 
-This project is a cloud-based system that detects and prevents duplicate data storage using hashing techniques.
+##  Project Overview
 
+This system is designed to detect and eliminate redundant data in a cloud environment using hashing techniques. It ensures that only unique data is stored, improving storage efficiency and preventing duplication.
 
+---
 
-\## Features
+##  Objectives
 
-\- Identifies redundant data using SHA-256 hashing
+* Identify redundant data in cloud storage
+* Validate incoming data against existing records
+* Prevent duplicate data insertion
+* Store only unique and verified data
+* Improve database efficiency and accuracy
 
-\- Validates new data against existing records
+---
 
-\- Prevents duplicate entries
+##  Features
 
-\- Stores unique data in AWS S3
+*  SHA-256 hashing for duplicate detection
+*  Real-time validation of new data
+*  Automatic rejection of duplicate entries
+*  Storage of unique data in AWS S3
+*  Metadata storage using DynamoDB
 
-\- Stores metadata in DynamoDB
+---
 
+##  Tech Stack
 
+* Python
+* AWS S3
+* AWS DynamoDB
+* Boto3
 
-\## Technologies Used
+---
 
-\- Python
+##  How It Works
 
-\- AWS S3
+1. User submits data
+2. System generates SHA-256 hash
+3. Hash is checked in DynamoDB
+4. If duplicate → request rejected
+5. If unique → data stored in S3 and metadata stored in DynamoDB
 
-\- AWS DynamoDB
+---
 
-\- Boto3
+##  Testing
 
+The system was tested for:
 
+* Duplicate data inputs
+* Unique data inputs
+* Storage validation
+* Hash comparison accuracy
 
-\## How It Works
+---
 
-1\. User inputs data
+##  Cloud Integration
 
-2\. System generates hash
+* AWS S3 → stores actual data
+* AWS DynamoDB → stores hashes for fast lookup
 
-3\. Hash is checked in DynamoDB
+---
 
-4\. If duplicate → rejected
+##  Conclusion
 
-5\. If unique → stored in S3 and DynamoDB
+This system ensures efficient cloud storage by eliminating redundant data and maintaining a clean, optimized dataset. It demonstrates practical implementation of cloud-based deduplication techniques.
 
+---
 
+##  Author
 
-## Setup Instructions:
-
-### 1. Clone the repository
-
-git clone https://github.com/YOUR_USERNAME/cloud-dedup-system.git
-
-cd cloud-dedup-system
-
-
-### 2. Create virtual environment
-
-python -m venv venv
-.\venv\Scripts\activate
-
-
-### 3. Install dependencies
-
-pip install -r requirements.txt
-
-
-### 4. Configure AWS
-Make sure you have AWS CLI installed, then run:
-
-aws configure
-
-
-Enter:
-- Access Key ID
-- Secret Access Key
-- Region (e.g., ap-south-1)
-- Output format: json
-
-### 5. Create AWS Resources
-- Create an S3 bucket
-- Create a DynamoDB table:
-  - Table name: `dedup-table2`
-  - Partition key: `hash` (String)
-
-### 6. Update configuration
-In `utils.py`, update:
-
-BUCKET_NAME = 'your-bucket-name'
-
-
-### 7. Run the application
-
-python app.py
-
+Chaitanya Kulkarni
+CodeAlpha Intern
